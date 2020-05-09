@@ -3,7 +3,7 @@ import { Layout, Menu, Breadcrumb, Skeleton } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { menuList, pageList } from './menuConfig'
-import './index.css'
+import './index.scss'
 const { Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
@@ -94,7 +94,7 @@ function App(props) {
 						{menuNode}
 					</Menu>
 				</Sider>
-				<Layout className="site-layout">
+				<Layout>
 					<Content style={{ margin: '0 16px' }}>
 						<Breadcrumb style={{ margin: '16px 0' }}>
 							<Breadcrumb.Item>管理系统</Breadcrumb.Item>
@@ -102,10 +102,7 @@ function App(props) {
 								<Breadcrumb.Item key={it}>{it}</Breadcrumb.Item>
 							))}
 						</Breadcrumb>
-						<div
-							className="site-layout-background"
-							style={{ padding: 24, minHeight: 360 }}
-						>
+						<div style={{ minHeight: 360 }}>
 							<Suspense fallback={<Skeleton active />}>
 								{pageList.map((conf) => (
 									<Route key={conf.path} {...conf} />

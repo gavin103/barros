@@ -1,0 +1,75 @@
+module.exports = {
+	code: 1,
+	data: {
+		versions: [
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				editable: true,
+				effectiveTime: '2018-10-09 10:40:00',
+				version: 12,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				editable: true,
+				effectiveTime: '2018-04-08 00:00:00',
+				version: 11,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2017-08-21 15:37:33',
+				version: 9,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				editable: true,
+				effectiveTime: '2017-06-27 12:00:00',
+				version: 8,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2017-05-11 11:00:00',
+				version: 7,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				editable: true,
+				effectiveTime: '2017-04-11 11:00:00',
+				version: 6,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2017-03-02 13:00:00',
+				version: 5,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2017-02-15 00:00:00',
+				version: 4,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2017-01-04 00:00:00',
+				version: 3,
+			},
+			{
+				cityCode: '110000',
+				companyCode: 'A10001',
+				effectiveTime: '2016-12-01 00:00:00',
+				version: 2,
+			},
+		],
+		totalCount: 53,
+		pageNum: 2,
+		pageSize: 10,
+	},
+	msg: '成功',
+}

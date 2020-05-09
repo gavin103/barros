@@ -34,10 +34,10 @@ export const pageList = [
 	},
 	{
 		path: '/manage/versionList',
-		component: React.lazy(() => import('../Demo1')),
+		component: React.lazy(() => import('../VersionList')),
 	},
 	{
 		path: '/manage/demo2',
-		component: React.lazy(() => import('../Demo2')),
+		component: React.lazy(() => import('../Demo1')),
 	},
 ]
