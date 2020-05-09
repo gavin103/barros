@@ -8,15 +8,15 @@ export const menuList = [
 		icon: <PieChartOutlined />,
 	},
 	{
-		url: '/multi',
-		name: '多页',
-		breadName: '多页',
+		url: '/manage',
+		name: '管理工具',
+		breadName: '管理工具',
 		icon: <DesktopOutlined />,
 		children: [
 			{
-				subUrl: '/demo1',
-				name: '子页1',
-				breadName: '子页1',
+				subUrl: '/versionList',
+				name: '版本管理',
+				breadName: '版本列表',
 			},
 			{
 				subUrl: '/demo2',
@@ -33,11 +33,11 @@ export const pageList = [
 		component: React.lazy(() => import('../About')),
 	},
 	{
-		path: '/multi/demo1',
+		path: '/manage/versionList',
 		component: React.lazy(() => import('../Demo1')),
 	},
 	{
-		path: '/multi/demo2',
+		path: '/manage/demo2',
 		component: React.lazy(() => import('../Demo2')),
 	},
 ]
