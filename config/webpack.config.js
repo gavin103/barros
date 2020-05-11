@@ -28,7 +28,6 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const postcssNormalize = require('postcss-normalize')
 
 const appPackageJson = require(paths.appPackageJson)
-
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -53,6 +52,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
+	console.log('ENV=>', webpackEnv)
 	const isEnvDevelopment = webpackEnv === 'development'
 	const isEnvProduction = webpackEnv === 'production'
 

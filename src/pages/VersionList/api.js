@@ -1,15 +1,10 @@
-import request from '../../utils/request'
-import { message } from 'antd'
+import * as query from '../../utils/query'
+
 const API = {
 	versionlist: '/api/manage/versionlist',
+	allcities: '/api/common/allcities',
 }
 
-export const getVersionList = async () =>
-	request(API.versionlist).then((res) => {
-		const { code, data, msg } = res
-		if (code === 1) {
-			return data
-		} else {
-			message.error(msg || '服务器错误')
-		}
-	})
+export const getVersionList = query.get(API.versionlist)
+
+export const getCities = query.get(API.allcities)
