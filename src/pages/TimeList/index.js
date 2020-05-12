@@ -1,7 +1,7 @@
 /*
-	reducer和state配合存储数据
+	数据绑定在state上
 */
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	Table,
 	Card,
@@ -18,16 +18,19 @@ import { SearchOutlined, LoadingOutlined } from '@ant-design/icons'
 import debounce from 'lodash/debounce'
 import moment from 'moment'
 import * as APIs from './api'
-import { actionTypes, initialState, reducer } from './reducer'
 import './index.scss'
 
 const { Option } = Select
 const PAGESIZE = 10
-
+const initVersionInfo = {
+	pageNum: 1,
+	pageSize: PAGESIZE,
+	totalCount: 0,
+	versions: [],
+}
 function VersionList(props) {
-	const [state, dispatch] = useReducer(reducer, initialState)
-	const { versionList = [], total, current, cities } = state
-
+	const [versionInfo, setVersionInfo] = useState(initVersionInfo)
+	const [cities, setCities] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [pageNum, setPageNum] = useState(1)
 	const [searching, setSearching] = useState()
@@ -39,32 +42,14 @@ function VersionList(props) {
 			setLoading(true)
 			const data = await APIs.getVersionList(params)
 			if (data) {
-				const {
-					versions: versionList,
-					totalCount: total,
-					pageNum: current,
-				} = data
+				setVersionInfo(data)
 				setLoading(false)
-				dispatch({
-					type: actionTypes.GET_VERSION_LIST,
-					payload: { versionList, total, current },
-				})
 			} else {
 				setLoading(false)
-				dispatch({
-					type: actionTypes.GET_VERSION_LIST,
-					payload: { versionList: [] },
-				})
 			}
 		}
 		const { value: city } = keywords || {}
 		getVersionList({ city, pageNum })
-		return function () {
-			dispatch({
-				type: actionTypes.GET_VERSION_LIST,
-				payload: { versionList: [] },
-			})
-		}
 	}, [pageNum, keywords])
 
 	const getCities = async (params) => {
@@ -73,16 +58,9 @@ function VersionList(props) {
 		if (data) {
 			setSearching(false)
 			const { allcities = [] } = data
-			dispatch({
-				type: actionTypes.GET_CITIES,
-				payload: allcities,
-			})
+			setCities(allcities)
 		} else {
 			setSearching(false)
-			dispatch({
-				type: actionTypes.GET_CITIES,
-				payload: [],
-			})
 		}
 	}
 
@@ -121,7 +99,11 @@ function VersionList(props) {
 		const effectiveTime = value.format('YYYY-MM-DD HH:mm:ss')
 		setModifyRecord({ ...modifyRecord, effectiveTime })
 	}
-
+	const {
+		totalCount: total = 0,
+		pageNum: current = 1,
+		versions = [],
+	} = versionInfo
 	const pagination = {
 		total,
 		current,
@@ -172,7 +154,6 @@ function VersionList(props) {
 			],
 		},
 	]
-	console.log('state=>', state)
 	return (
 		<>
 			<Card className="version-list-head">
@@ -206,7 +187,7 @@ function VersionList(props) {
 					loading={loading}
 					columns={columns}
 					pagination={pagination}
-					dataSource={versionList}
+					dataSource={versions}
 					onChange={handleTableChange}
 				/>
 			</Card>

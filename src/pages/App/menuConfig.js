@@ -19,9 +19,9 @@ export const menuList = [
 				breadName: '版本列表',
 			},
 			{
-				subUrl: '/demo2',
-				name: '子页2',
-				breadName: '子页2',
+				subUrl: '/timeList',
+				name: '时间管理',
+				breadName: '时间列表',
 			},
 		],
 	},
@@ -37,7 +37,7 @@ export const pageList = [
 		component: React.lazy(() => import('../VersionList')),
 	},
 	{
-		path: '/manage/demo2',
-		component: React.lazy(() => import('../Demo1')),
+		path: '/manage/timeList',
+		component: React.lazy(() => import('../TimeList')),
 	},
 ]

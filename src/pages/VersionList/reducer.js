@@ -1,6 +1,7 @@
 const actionTypes = {
 	GET_VERSION_LIST: Symbol('getVersionList'),
 	GET_CITIES: Symbol('getCities'),
+	SET_NUM: Symbol('setNum'),
 }
 
 const initialState = {
@@ -14,12 +15,12 @@ const reducer = (state, action) => {
 	switch (action.type) {
 		case actionTypes.GET_VERSION_LIST:
 			return {
-				...initialState,
+				...state,
 				...action.payload,
 			}
 		case actionTypes.GET_CITIES:
 			return {
-				...initialState,
+				...state,
 				cities: action.payload,
 			}
 		default:
